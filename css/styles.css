@@ -11,7 +11,7 @@
     box-sizing: border-box;
     text-decoration: none;
     color: white;
-    align-text: center;
+    text-align: justify;
 }
 html{
     scroll-behavior: smooth;
