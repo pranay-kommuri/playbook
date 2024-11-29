@@ -1,0 +1,21 @@
+Football
+Basketball
+Cricket
+Tennis
+Rugby
+Baseball
+Ice Hockey
+Golf
+Boxing
+Badminton
+Volleyball
+Swimming
+Table Tennis
+Athletics
+Cycling
+Wrestling
+Karate
+Gymnastics
+Handball
+Surfing
+Lagoori

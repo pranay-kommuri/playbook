@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Sports | Playbook</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000000;
+            color: black;
+        }
+
+        header input{
+            color: black;
+        }
+        
+
+        .explore-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .sport-card {
+            position: relative;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            color: white;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        .sport-card h2 {
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+
+        .sport-card:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+
+        .sport-card a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .sport-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hero Section */
+        .cont {
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            background-blend-mode: overlay;
+        }
+
+        .cont h1 {
+            font-size: 36px;
+            margin: 10px 0;
+        }
+
+        .cont p {
+            font-size: 18px;
+        }
+
+        .simage {
+            width: 100%;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .search-results {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .search-results li {
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .search-results li:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="logo"><a href="#">PLAYBOOK</a></div>
+
+    <!-- Header Section -->
+    <header>
+        <div class="emptyspace"></div>
+        <input type="search" id="searchBox" placeholder="Search sports..." onkeyup="dynamicSearch()">
+        <div class="login"><a href="#">Login</a></div>
+    </header>
+
+    <!-- Navbar -->
+    <ul class="navbar">
+        <li tooltip="Home"><a href="./index.html"><i class="ri-home-5-line"></i></a></li>
+        <li tooltip="Explore"><a href="#"><i class="ri-compass-3-line"></i></a></li>
+        <li tooltip="About"><a href="./index.html#about"><i class="ri-question-line"></i></a></li>
+        <li tooltip="Contact"><a href="./index.html#contact"><i class="ri-customer-service-fill"></i></a></li>
+        <li tooltip="Logout"><a href="./login.html"><i class="ri-login-box-line"></i></a></li>
+    </ul>
+
+    <div class="explore-container" id="sportContainer">
+        <!-- Sports Cards will be injected here dynamically by JavaScript -->
+    </div>
+
+    <script>
+        // Array of sports for dynamic search
+        const sports = [
+            "Football", "Basketball", "Cricket", "Tennis", "Rugby", "Baseball", "Ice Hockey",
+            "Golf", "Boxing", "Badminton", "Volleyball", "Swimming", "Table Tennis", "Athletics", 
+            "Cycling", "Wrestling", "Karate", "Gymnastics", "Handball", "Surfing"
+        ];
+
+        const sportContainer = document.getElementById('sportContainer');
+        const searchBox = document.getElementById('searchBox');
+        
+        // Render all sports initially
+        function renderSports(sportsList) {
+            sportContainer.innerHTML = '';
+            sportsList.forEach((sport, index) => {
+                const sportCard = document.createElement('div');
+                sportCard.classList.add('sport-card');
+                // Updated background image URL to use .jpg
+                sportCard.style.backgroundImage = `url('./assets/sports/img${index + 1}.jpg')`;
+
+                // Updated <a> tag with the dynamic link to the corresponding sport page
+                sportCard.innerHTML = `<a href="./pages/sport${index + 1}.html"><h2>${sport}</h2></a>`;
+                sportContainer.appendChild(sportCard);
+            });
+        }
+
+        // Dynamic search functionality
+        function dynamicSearch() {
+            const query = searchBox.value.toLowerCase();
+            const filteredSports = sports.filter(sport => sport.toLowerCase().includes(query));
+            renderSports(filteredSports);
+        }
+
+        // Initial render
+        renderSports(sports);
+    </script>
+
+    <script src="./js/script.js"></script>
+
+</body>
+</html>
